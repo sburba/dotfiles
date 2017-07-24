@@ -1,2 +1,5 @@
 # Downloads folder created by init script
 .downloads
+
+# Vim swap files
+*.swp
