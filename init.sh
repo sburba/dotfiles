@@ -37,6 +37,9 @@ sudo apt install vim git stow i3 compton rofi lxappearance feh gdebi
 header "Installing special snowflake apps not in the default repo"
 install_deb google-chrome-stable https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
+header "Setting up gnome-terminal"
+./monokai.dark.sh
+
 header "Installing dotfiles"
 # Run stow on every non-dot-prefixed directory in this dir
 find * -maxdepth 0 -type d -exec stow {} \;
