@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-set -eou pipefail
+set -o errexit
+set -o pipefail
+set -o nounset
 
 install_deb () {
     local executable_name=$1
     local url=$2
 
     # If it's already installed, don't install it again
-    if hash $executable_name 2>/dev/null; then
+    if hash "${executable_name}" 2>/dev/null; then
         echo "$executable_name is already installed"
         return 0
     fi
@@ -16,18 +18,18 @@ install_deb () {
     # Same thing if it's already downloaded
     if [ ! -f "$deb_path" ]; then
         mkdir -p .downloads
-        wget $url -O $deb_path
+        wget "${url}" -O "${deb_path}"
     fi
 
     echo "Installing $executable_name"
-    yes | sudo gdebi $deb_path
+    yes | sudo gdebi "${deb_path}"
 }
 
 header () {
     text=$1
 
     echo
-    echo $text
+    echo ${text}
     echo
 }
 
@@ -42,6 +44,6 @@ header "Setting up gnome-terminal"
 
 header "Installing dotfiles"
 # Run stow on every non-dot-prefixed directory in this dir
-find * -maxdepth 0 -type d -exec stow {} \;
+find * -maxdepth 0 -type d -exec stow "{}" \;
 
 echo "Done"
