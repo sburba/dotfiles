@@ -3,3 +3,7 @@
 
 # Vim swap files
 *.swp
+
+# Intellij
+.idea
+
