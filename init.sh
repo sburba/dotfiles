@@ -25,6 +25,26 @@ install_deb () {
     yes | sudo gdebi "${deb_path}"
 }
 
+add_apt_source () {
+    local friendly_name=$1
+    local source_url=$2
+    local key_url_1=$3
+    local key_url_2=$4
+
+    local source_line="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+    if grep -Fxq "$source_line" /etc/apt/sources.list; then
+        echo "$source_url is already in the sources list"
+    else
+        sudo bash -c 'cat >> /etc/apt/sources.list' << EOF
+# Apt Repository for $friendly_name
+deb $source_url $(lsb_release -sc) contrib
+EOF
+    fi
+
+    wget -q "$key_url_1" -O- | sudo apt-key add -
+    wget -q "$key_url_2" -O- | sudo apt-key add -
+}
+
 header () {
     text=$1
 
