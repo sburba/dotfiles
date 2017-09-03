@@ -1,6 +1,7 @@
 :imap jk <Esc>
 
 filetype plugin indent on
+syntax on
 
 " Make tab be 4 spaces always
 set tabstop=4
