@@ -63,4 +63,9 @@ header "Installing dotfiles"
 # Run stow on every non-dot-prefixed directory in this dir
 find * -maxdepth 0 -type d -exec stow "{}" \;
 
+header "Setting up wallpaper"
+if [ ! -f "~/Pictures/wallpaper.png" ]; then
+    cp wallpapers/wallpaper.png ~/Pictures/wallpaper.png
+fi
+
 echo "Done"

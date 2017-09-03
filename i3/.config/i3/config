@@ -195,3 +195,6 @@ bindsym $mod+x move workspace to output right
 for_window [class="^.*"] border pixel 2
 new_window pixel 2
 
+# Set up wallpaper
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+
