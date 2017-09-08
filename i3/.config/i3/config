@@ -86,7 +86,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -169,6 +169,12 @@ bindsym $mod+Shift+e mode "$mode_system"
 focus_follows_mouse no
 popup_during_fullscreen smart
 
+# Swap current container with mark A
+bindsym $mod+Shift+s swap container with mark A
+
+# Mark current container as A
+bindsym $mod+m mark A
+
 # Bind search to application search
 bindsym XF86Search exec rofi -show run -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
 
@@ -187,5 +193,5 @@ bindsym $mod+x move workspace to output right
 
 # Disable title bars
 for_window [class="^.*"] border pixel 2
-new_window 1pixel
+new_window pixel 2
 
