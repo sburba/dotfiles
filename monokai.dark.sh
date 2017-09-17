@@ -54,6 +54,9 @@ if which "$DCONF" > /dev/null 2>&1; then
         unset UUIDGEN
         exit 0
     fi
+else
+    echo "Unsupported version of gnome-terminal"
+    exit 1
 fi
 
 echo "Your version of gnome is not supported"
