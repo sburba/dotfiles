@@ -61,7 +61,9 @@ header "Setting up gnome-terminal"
 
 header "Installing dotfiles"
 # Run stow on every non-dot-prefixed directory in this dir
-find * -maxdepth 0 -type d -exec stow "{}" \;
+pushd stowables &>/dev/null
+find * -maxdepth 0 -type d -exec stow --target=../../ "{}" \;
+popd &>/dev/null
 
 header "Setting up wallpaper"
 if [ ! -f "~/Pictures/wallpaper.png" ]; then
