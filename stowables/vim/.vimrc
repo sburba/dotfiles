@@ -34,9 +34,10 @@ let g:molokai_original = 1
 " Case insensitive search by default
 set ignorecase
 
-" All copies go to the system clipboard
-:set clipboard=unnamedplus
-
+" When you quit vim, copy vim clipboards into system clipboard
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 autocmd VimLeave * call system("xsel -ip", getreg('*'))
+
+set number
+set relativenumber
 

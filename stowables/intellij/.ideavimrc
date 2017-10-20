@@ -1,3 +1,6 @@
 :imap jk <Esc>
 
 set surround
+
+set number
+set relativenumber
