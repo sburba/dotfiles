@@ -175,6 +175,9 @@ bindsym $mod+Shift+s swap container with mark A
 # Mark current container as A
 bindsym $mod+m mark A
 
+# Allow screenshots with scrot
+bindsym --release $mod+q exec scrot -s -e 'mv $f ~/Pictures/'
+
 # Bind search to application search
 bindsym XF86Search exec rofi -show run -fg "#f1f1f1" -bg "#333333" -hlfg "#ffffff" -hlbg "#336699" -o 85
 
