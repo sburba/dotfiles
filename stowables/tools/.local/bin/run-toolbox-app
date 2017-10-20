@@ -1,9 +1,9 @@
 #/usr/bin/env bash
 set -euo pipefail
 
-app_name=$1
-lowercase_app_name="${app_name,,}"
+folder_name=$1
+script_name=$2
 
-exe=$(find ~/.local/share/JetBrains/Toolbox/apps/${app_name} -name "${lowercase_app_name}.sh" | sort -r | head -n1)
+exe=$(find ~/.local/share/JetBrains/Toolbox/apps/${folder_name} -name "${script_name}.sh" | sort -r | head -n1)
 
 eval $exe
