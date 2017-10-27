@@ -51,7 +51,7 @@ add_apt_source enpass "http://repo.sinew.in/ stable main" https://dl.sinew.in/ke
 
 header "Installing apps from the default repository"
 sudo apt update
-sudo apt install vim git stow i3 compton rofi lxappearance feh gdebi enpass
+sudo apt install vim git stow i3 compton rofi lxappearance feh gdebi enpass curl
 
 header "Installing special snowflake apps not in the default repo"
 install_deb google-chrome-stable https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
