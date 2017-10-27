@@ -194,6 +194,9 @@ bindsym $mod+Shift+v exec "pactl set-sink-mute alsa_output.pci-0000_00_1f.3.hdmi
 # Move workspace to another screen
 bindsym $mod+x move workspace to output right
 
+# Start compton
+exec --no-startup-id compton
+
 # Disable title bars
 for_window [class="^.*"] border pixel 2
 new_window pixel 2
