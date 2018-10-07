@@ -1,0 +1,63 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Add required copr repositories
+      become: yes
+      command: dnf copr enable -y {{ item }}
+      args:
+        warn: no
+      with_items:
+        - thofmann/rofi
+        - axeld/compton
+        - riquito/polybar
+    - name: Install base packages
+      become: yes
+      package:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - vim-enhanced
+        - git
+        - xclip
+        - rxvt-unicode
+        # Desktop environment
+        - i3
+        - compton
+        - polybar
+        - rofi
+        - feh
+        # To manage dotfiles
+        - stow
+        # Enpass dependencies
+        - libXScrnSaver
+        - lsof
+    - name: Remove unused base packages
+      become: yes
+      package:
+        name: "{{ item }}"
+        state: absent
+        autoremove: yes
+      with_items:
+        - libreoffice-calc
+        - libreoffice-draw
+        - libreoffice-impress
+        - libreoffice-math
+        - libreoffice-writer
+        - libreoffice-core
+        - libreofficekit
+    - name: Find dotfiles
+      register: files_matched
+      find:
+        paths: ./stowables
+        file_type: directory
+    - debug:
+        var: files_matched.files
+    - name: Lay down dotfiles
+      command: stow {{ item | basename }} --target={{ ansible_env.HOME }}
+      args:
+        chdir: stowables
+      with_items: "{{ files_matched | json_query('files[*].path') }}"
+    - name: Remove unneeded dependencies
+      become: yes
+      dnf:
+        autoremove: yes

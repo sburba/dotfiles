@@ -1,6 +1,9 @@
 # Downloads folder created by init script
 .downloads
 
+# Ansible retry files
+*.retry
+
 # Vim swap files
 *.swp
 
