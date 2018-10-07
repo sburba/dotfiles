@@ -5,6 +5,8 @@
       become: yes
       command: dnf copr enable -y {{ item }}
       args:
+        # Ansible dnf doesn't support copr
+        # See https://github.com/ansible/ansible/issues/26673
         warn: no
       with_items:
         - thofmann/rofi
