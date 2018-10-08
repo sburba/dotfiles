@@ -4,9 +4,8 @@ set -euo pipefail
 
 sudo dnf install git ansible -y
 
-if [ ! -d ~/.dotfiles ]; then
-  git clone https://github.com/sburba/dotfiles.git ~/.dotfiles
-fi
+git clone https://github.com/sburba/dotfiles.git ~/.dotfiles
+mv ~/.bashrc ~/.bashrc.original
 
 pushd ~/.dotfiles
 ansible-playbook -K install.yml
