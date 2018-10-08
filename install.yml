@@ -52,8 +52,6 @@
       find:
         paths: ./stowables
         file_type: directory
-    - debug:
-        var: files_matched.files
     - name: Lay down dotfiles
       command: stow {{ item | basename }} --target={{ ansible_env.HOME }}
       args:
