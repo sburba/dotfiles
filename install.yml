@@ -21,7 +21,6 @@
         - vim-enhanced
         - git
         - xclip
-        - rxvt-unicode
         # Desktop environment
         - i3
         - compton
