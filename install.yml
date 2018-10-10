@@ -50,7 +50,7 @@
         - libreofficekit
     - name: Get Gnome Terminal profile
       # dconf can't figure out the default profile, but gsettings can't actually
-      # set the values, so we have to use a Frakenstein's monster combination of both
+      # set the values, so we have to use a Frakenstein combination of both
       # This makes me very sad :(
       shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \\'"
       register: profile
