@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-pushd ~/.dotfiles
+pushd ~/.dotfiles > /dev/null
 ansible-playbook -K install.yml -i ansible/hosts
-popd
+popd > /dev/null
 
