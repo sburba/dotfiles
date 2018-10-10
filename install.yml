@@ -49,14 +49,12 @@
         - libreoffice-core
         - libreofficekit
     - name: Get Gnome Terminal profile
-      tags: ahh
       # dconf can't figure out the default profile, but gsettings can't actually
       # set the values, so we have to use a Frakenstein's monster combination of both
       # This makes me very sad :(
       shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \\'"
       register: profile
     - name: Set Gnome Terminal theme
-      tags: ahh
       dconf:
         key: "/org/gnome/terminal/legacy/profiles:/:{{profile.stdout}}/{{ item.key }}"
         value: "{{ item.value }}"
