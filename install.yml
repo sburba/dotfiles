@@ -12,7 +12,7 @@
         - thofmann/rofi
         - axeld/compton
         - riquito/polybar
-    - name: Install base packages
+    - name: Install Packages
       become: yes
       package:
         name: "{{ item }}"
@@ -21,6 +21,8 @@
         - vim-enhanced
         - git
         - xclip
+        # ansible needs this for dconf plugin
+        - python2-psutil
         # Desktop environment
         - i3
         - compton
@@ -46,6 +48,26 @@
         - libreoffice-writer
         - libreoffice-core
         - libreofficekit
+    - name: Get Gnome Terminal profile
+      tags: ahh
+      # dconf can't figure out the default profile, but gsettings can't actually
+      # set the values, so we have to use a Frakenstein's monster combination of both
+      # This makes me very sad :(
+      shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \\'"
+      register: profile
+    - name: Set Gnome Terminal theme
+      tags: ahh
+      dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:{{profile.stdout}}/{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+      loop:
+        - { key: "background-color", value: "'rgb(0,43,54)'" }
+        - { key: "use-theme-colors", value: "false" }
+        - { key: "bold-color-same-as-fg", value: "true" }
+        - { key: "foreground-color", value: "'rgb(131,148,150)'" }
+        - { key: "use-system-font", value: "false" }
+        - { key: "font", value: "'Monospace 12'" }
     - name: Find dotfiles
       register: files_matched
       find:
