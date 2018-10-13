@@ -1,0 +1,59 @@
+URxvt.font: xft:bitstream vera sans mono:size=10:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+URxvt.scrollBar: false
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+
+URxvt*externalBorder: 0
+URxvt*internalBorder: 0
+
+*foreground:        #80807e
+*background:        #272a2a
+*.foreground:       #80807e
+*.background:       #272a2a
+URxvt*foreground:   #80807e
+URxvt*background:   [100]#272a2a
+URxvt*cursorColor:  #eaeaed
+URxvt*borderColor:  [100]#272a2a
+
+! Colors 0-15.
+*.color0: #272a2a
+*color0:  #272a2a
+*.color1: #b05f5f
+*color1:  #b05f5f
+*.color2: #b05f5f
+*color2:  #b05f5f
+*.color3: #88aa55
+*color3:  #88aa55
+*.color4: #88aa55
+*color4:  #88aa55
+*.color5: #ccb05f
+*color5:  #ccb05f
+*.color6: #ccb05f
+*color6:  #ccb05f
+*.color7: #556973
+*color7:  #556973
+*.color8: #484c4e
+*color8:  #484c4e
+*.color9: #b05f5f
+*color9:  #b05f5f
+*.color10: #b05f5f
+*color10:  #b05f5f
+*.color11: #88aa55
+*color11:  #88aa55
+*.color12: #88aa55
+*color12:  #88aa55
+*.color13: #ccb05f
+*color13:  #ccb05f
+*.color14: #ccb05f
+*color14:  #ccb05f
+*.color15: #f6f7f8
+*color15:  #f6f7f8
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #272a2a
+*color66:  #272a2a
+
+! Set depth to make transparency work.
+URxvt*depth: 32
+
