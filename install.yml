@@ -41,10 +41,10 @@
     - name: Install oh-my-zsh
       git:
         repo: https://github.com/robbyrussell/oh-my-zsh
-        dest: "{{ ansible_env.home }}/.oh-my-zsh"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
         update: no
     - name: Set zsh as the default shell
-      user: name={{ current_user }} shell=/bin/zsh
+      user: name={{ current_user.stdout }} shell=/bin/zsh
     - name: Remove unused base packages
       become: yes
       package:
