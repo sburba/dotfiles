@@ -76,7 +76,3 @@
       args:
         chdir: stowables
       with_items: "{{ files_matched | json_query('files[*].path') }}"
-    - name: Remove unneeded dependencies
-      become: yes
-      dnf:
-        autoremove: yes
