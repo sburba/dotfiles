@@ -21,6 +21,7 @@
         - vim-enhanced
         - git
         - xclip
+        - zsh
         # ansible needs this for dconf plugin
         - python2-psutil
         # Desktop environment
@@ -34,6 +35,16 @@
         # Enpass dependencies
         - libXScrnSaver
         - lsof
+    - name: Get current user
+      command: whoami
+      register: current_user
+    - name: Install oh-my-zsh
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh
+        dest: "{{ ansible_env.home }}/.oh-my-zsh"
+        update: no
+    - name: Set zsh as the default shell
+      user: name={{ current_user }} shell=/bin/zsh
     - name: Remove unused base packages
       become: yes
       package:
