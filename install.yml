@@ -13,13 +13,14 @@
         - axeld/compton
         - riquito/polybar
         - nforro/i3-gaps
+        - dperson/neovim
     - name: Install Packages
       become: yes
       package:
         name: "{{ item }}"
         state: latest
       with_items:
-        - vim-enhanced
+        - neovim
         - git
         - xclip
         - zsh
