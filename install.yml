@@ -11,8 +11,6 @@
       with_items:
         - thofmann/rofi
         - axeld/compton
-        - riquito/polybar
-        - nforro/i3-gaps
         - dperson/neovim
     - name: Install Packages
       become: yes
@@ -27,7 +25,8 @@
         # ansible needs this for dconf plugin
         - python2-psutil
         # Desktop environment
-        - i3-gaps
+        - i3
+        - i3lock
         - compton
         - polybar
         - rofi
