@@ -22,11 +22,6 @@ nnoremap <C-H> <C-W><C-H>
 :set incsearch
 :set hlsearch
 
-" Molokai color scheme
-set t_Co=16
-colorscheme molokai
-let g:molokai_original = 1
-
 " Make searching incremental and highlight
 :set incsearch
 :set hlsearch
