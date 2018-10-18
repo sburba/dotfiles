@@ -1,4 +1,4 @@
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.theme: /usr/share//rofi/themes//Adapta-Nokto.rasi
