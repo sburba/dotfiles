@@ -99,3 +99,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Set up fuck command
 eval $(thefuck --alias)
+
+# I'm never going to learn to actually type nvim
+export EDITOR=nvim
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff='nvim -d'
