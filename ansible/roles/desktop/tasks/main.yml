@@ -1,5 +1,6 @@
 - include: chrome.yml
 - include: zsh.yml
+- include: dotfiles.yml
 - name: Add required copr repositories
   become: yes
   command: dnf copr enable -y {{ item }}
@@ -21,8 +22,6 @@
     - git
     - xclip
     - thefuck
-    # ansible needs this for dconf plugin
-    - python2-psutil
     # Desktop environment
     - i3
     - i3lock
@@ -31,8 +30,6 @@
     - feh
     # Catch laptop lid close/open
     - acpid
-    # To manage dotfiles
-    - stow
     # Enpass dependencies
     - libXScrnSaver
     - lsof
@@ -50,13 +47,3 @@
     - libreoffice-writer
     - libreoffice-core
     - libreofficekit
-- name: Find dotfiles
-  register: files_matched
-  find:
-    paths: ./stowables
-    file_type: directory
-- name: Lay down dotfiles
-  command: stow {{ item | basename }} --target={{ ansible_env.HOME }}
-  args:
-    chdir: stowables
-  with_items: "{{ files_matched | json_query('files[*].path') }}"

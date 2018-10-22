@@ -1,0 +1,15 @@
+- name: Install stow
+  become: yes
+  package:
+    name: stow
+    state: latest
+- name: Find dotfiles
+  register: dotfiles
+  find:
+    paths: ./stowables
+    file_type: directory
+- name: Lay down dotfiles
+  command: stow {{ item | basename }} --target={{ ansible_env.HOME }}
+  args:
+    chdir: stowables
+  with_items: "{{ dotfiles | json_query('files[*].path') }}"
