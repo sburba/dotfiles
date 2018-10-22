@@ -4,8 +4,9 @@
 # Ansible retry files
 *.retry
 
-# Vim swap files
+# Vim
 *.swp
+.netrwhist
 
 # Intellij
 .idea
