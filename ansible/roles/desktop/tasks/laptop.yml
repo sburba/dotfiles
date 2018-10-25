@@ -1,0 +1,27 @@
+- name: Install acpid
+  become: yes
+  package:
+    name: acpid
+    state: latest
+- name: Add lid_change script
+  become: yes
+  file:
+    src: "{{ home_dir }}/.dotfiles/scripts/on_lid_change.sh"
+    dest: /etc/acpi/actions/on_lid_change.sh
+    state: link
+- name: Add lid_change event
+  become: yes
+  file:
+    src: "{{ home_dir }}/.dotfiles/scripts/lidconf"
+    dest: /etc/acpi/events/lidconf
+    state: link
+- name: Add file
+  become: yes
+  file:
+    path: /var/log/lid_change.log
+    owner: "{{ current_user }}"
+- name: Enable the acpid service
+  service:
+    name: acpid
+    enabled: true
+    state: started

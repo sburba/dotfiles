@@ -3,6 +3,9 @@
     home_dir: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
   connection: local
+  vars:
+    current_user: "{{ lookup('env','USER') }}"
+    home_dir: "{{ lookup('env','HOME') }}"
   roles:
     - desktop
     - ansible-jetbrains-toolbox

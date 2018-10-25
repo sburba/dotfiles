@@ -2,6 +2,7 @@
 - include: zsh.yml
 - include: dotfiles.yml
 - include: enpass.yml
+- include: laptop.yml
 - name: Add required copr repositories
   become: yes
   command: dnf copr enable -y {{ item }}
@@ -22,6 +23,7 @@
     - git
     - xclip
     - thefuck
+    - scrot
     # Desktop environment
     - i3
     - i3lock
