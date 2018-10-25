@@ -9,7 +9,7 @@
     paths: "{{ home_dir }}/.dotfiles/stowables"
     file_type: directory
 - name: Lay down dotfiles
-  command: stow {{ item | basename }} --target={{ home_dir }}
+  command: stow {{ item | basename }} --target={{ ansible_env.HOME }} --no-folding
   args:
     chdir: "{{ home_dir }}/.dotfiles/stowables"
   with_items: "{{ dotfiles | json_query('files[*].path') }}"
