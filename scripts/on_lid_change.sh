@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 
-laptop_screen=$(xrandr | grep "connected primary" | cut -d " " -f 1)
-external_screen=$(xrandr | grep " connected" | grep -v primary | cut -d " " -f 1)
+#set -euo pipefail
+
+xrandr_output=$(xrandr)
+laptop_screen=$($xrandr_output | grep "connected primary" | cut -d " " -f 1)
+all_other_screens=$(xrandr | grep " connected" | grep -v "primary" | cut -d " " -f 1)
 lid_open=$(cat /proc/acpi/button/lid/LID0/state | grep open)
 
+xrandr_args=""
 
-if [[ ! ${external_screen} ]]; then
-    echo "auto"
-    xrandr --auto
-elif [[ ${lid_open} ]]; then
-    echo "docked open"
-    ~/.screenlayout/docked-open.sh
+for screen in $all_screens; do
+    xrandr_args+="--output $screen --auto"
+done
+
+if [[ $lid_open ]]; then
+    xrandr_args+="--output $laptop_screen --auto"
 else
-    echo "docked closed"
-    ~/.screenlayout/docked-closed.sh
+    xrandr_args+="--output $laptop_screen --off"
 fi
+
+echo "xrandr $xrandr_args" >> /var/log/lid_change.log
+
+xrandr $xrandr_args
 
