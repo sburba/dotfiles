@@ -13,3 +13,5 @@
     mode: "u=rwx,g=r,o=r"
 - name: Run installer
   command: "{{ home_dir }}/Downloads/Enpass_Installer_5.6.9"
+  args:
+    creates: /opt/Enpass/runenpass.sh
