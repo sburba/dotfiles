@@ -1,6 +1,7 @@
 - include: chrome.yml
 - include: zsh.yml
 - include: dotfiles.yml
+- include: enpass.yml
 - name: Add required copr repositories
   become: yes
   command: dnf copr enable -y {{ item }}

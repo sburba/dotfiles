@@ -1,0 +1,15 @@
+- name: Install Enpass Dependencies
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - libXScrnSaver
+    - lsof
+- name: Download installer
+  get_url:
+    url: https://dl.sinew.in/linux/setup/5-6-9/Enpass_Installer_5.6.9 
+    dest: "{{ home_dir }}/Downloads/Enpass_Installer_5.6.9"
+    mode: "u=rwx,g=r,o=r"
+- name: Run installer
+  command: "{{ home_dir }}/Downloads/Enpass_Installer_5.6.9"
