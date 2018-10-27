@@ -29,11 +29,6 @@
     - compton
     - rofi
     - feh
-    # Catch laptop lid close/open
-    - acpid
-    # Enpass dependencies
-    - libXScrnSaver
-    - lsof
 - name: Remove unused base packages
   become: yes
   package:
