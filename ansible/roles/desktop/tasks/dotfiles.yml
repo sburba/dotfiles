@@ -6,10 +6,10 @@
 - name: Find dotfiles
   register: dotfiles
   find:
-    paths: ./stowables
+    paths: "{{ home_dir }}/.dotfiles/stowables"
     file_type: directory
 - name: Lay down dotfiles
-  command: stow {{ item | basename }} --target={{ ansible_env.HOME }}
+  command: stow {{ item | basename }} --target={{ home_dir }}
   args:
-    chdir: stowables
+    chdir: "{{ home_dir }}/.dotfiles/stowables"
   with_items: "{{ dotfiles | json_query('files[*].path') }}"

@@ -3,14 +3,11 @@
   package:
     name: zsh
     state: latest
-- name: Get current user
-  command: whoami
-  register: current_user
 - name: Install oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    dest: "{{ home_dir }}/.oh-my-zsh"
     update: yes
 - name: Set zsh as the default shell
   become: yes
-  user: name={{ current_user.stdout }} shell=/bin/zsh
+  user: name={{ user }} shell=/bin/zsh

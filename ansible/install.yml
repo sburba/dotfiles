@@ -1,4 +1,7 @@
 - hosts: localhost
+  vars:
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    user: "{{ lookup('env', 'USER') }}"
   connection: local
   roles:
     - desktop
