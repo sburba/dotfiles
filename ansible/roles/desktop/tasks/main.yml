@@ -27,6 +27,7 @@
     - i3lock
     - rofi
     - feh
+    - arandr
 - name: Remove unused base packages
   become: yes
   package:
