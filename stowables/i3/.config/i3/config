@@ -189,8 +189,6 @@ bar {
     tray_output primary
 }
 
-exec_always ~/.dotfiles/scripts/on_lid_change.sh
-
 # Set up wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/yosemite.png
 
