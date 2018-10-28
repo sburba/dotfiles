@@ -19,7 +19,8 @@
   become: yes
   file:
     path: /var/log/lid_change.log
-    owner: "{{ current_user }}"
+    state: touch
+    owner: "{{ user }}"
 - name: Enable the acpid service
   service:
     name: acpid
