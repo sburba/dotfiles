@@ -30,6 +30,7 @@
     - rofi
     - feh
     - arandr
+    - network-manager-applet
 - name: Remove unused base packages
   become: yes
   package:
