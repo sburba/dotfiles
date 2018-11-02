@@ -1,0 +1,30 @@
+- name: Enable docker repo
+  become: yes
+  command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    # ansible dnf module won't permanently enable a repo, I want that so I can't use it
+    warn: no
+- name: Install docker
+  become: yes
+  package:
+    name: docker-ce
+    state: latest
+- name: Get kernel name
+  command: uname -s
+  register: kernel_name
+- name: Get kernel version
+  command: uname -m
+  register: kernel_version
+- name: Install docker-compose
+  become: yes
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-{{ kernel_name.stdout }}-{{ kernel_version.stdout }}"
+    dest: /usr/local/bin/docker-compose
+    mode: u=rwx,g=rx,o=rx
+- name: Add user to docker users
+  become: yes
+  user:
+    name: "{{ user }}"
+    groups: docker
+    append: yes
+

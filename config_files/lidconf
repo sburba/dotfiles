@@ -2,4 +2,5 @@
 # no gnome-power-manager is running
 
 event=button/lid.*
-action=/etc/acpi/actions/on_lid_change.sh
+action=autorandr --change
+

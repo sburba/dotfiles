@@ -1,28 +1,34 @@
-- name: Install acpid
+- name: Enable autorandr repo
+  become: yes
+  command: dnf copr enable macieks/autorandr -y
+  args:
+    # Dnf module doesn't support copr
+    warn: no
+- name: Install packages needed for monitor control
   become: yes
   package:
-    name: acpid
+    name: "{{ item }}"
     state: latest
-- name: Add lid_change script
+  loop:
+    - autorandr
+    - acpid
+- name: Enable the autorandr service
   become: yes
-  file:
-    src: "{{ home_dir }}/.dotfiles/scripts/on_lid_change.sh"
-    dest: /etc/acpi/actions/on_lid_change.sh
-    state: link
-- name: Add lid_change event
+  service:
+    name: autorandr
+    enabled: true
+    state: started
+- name: Enable the acpi service
   become: yes
-  file:
-    src: "{{ home_dir }}/.dotfiles/scripts/lidconf"
-    dest: /etc/acpi/events/lidconf
-    state: link
-- name: Add file
-  become: yes
-  file:
-    path: /var/log/lid_change.log
-    state: touch
-    owner: "{{ user }}"
-- name: Enable the acpid service
   service:
     name: acpid
     enabled: true
     state: started
+- name: Register laptop lid events
+  become: yes
+  copy:
+    src: "{{ home_dir }}/.dotfiles/config_files/lidconf"
+    dest: /etc/acpi/events/lidconf
+    owner: root
+    group: root
+    mode: "u=rw,g=r,o=r"

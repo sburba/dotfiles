@@ -192,8 +192,19 @@ bar {
 # Set up wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/yosemite.png
 
-# Set up gnome-session
 exec_always --no-startup-id gnome-session
 
 exec_always --no-startup-id nm-applet
+
+# Detect and set up monitors
+exec_always --no-startup-id autorandr --change
+
+# `input list` to find touchpad id
+# `xinput list-props <touchpad_id>` to find the tap to click prop
+# `xinput set-prop <touchpad_id> <prop_id> 1`
+# Turn on tap to click
+exec_always --no-startup-id xinput set-prop 12 295 1
+
+# Turn off "natural" scrolling
+exec_always --no-startup-id xinput set-prop 12 277 0
 

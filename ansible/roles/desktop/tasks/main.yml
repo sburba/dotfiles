@@ -3,6 +3,7 @@
 - include: dotfiles.yml
 - include: enpass.yml
 - include: laptop.yml
+- include: docker.yml
 - name: Add required copr repositories
   become: yes
   command: dnf copr enable -y {{ item }}
@@ -24,6 +25,7 @@
     - xclip
     - thefuck
     - scrot
+    - htop
     # Desktop environment
     - i3
     - i3lock
@@ -31,6 +33,9 @@
     - feh
     - arandr
     - network-manager-applet
+    - pavucontrol
+    # Required to enable non-copr 3rd party repos
+    - dnf-plugins-core
 - name: Remove unused base packages
   become: yes
   package:
