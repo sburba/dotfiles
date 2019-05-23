@@ -6,4 +6,5 @@ script_name=$2
 
 exe=$(find ~/.local/share/JetBrains/Toolbox/apps/${folder_name} -name "${script_name}.sh" | sort -r | head -n1)
 
+export _JAVA_AWT_WM_NONREPARENTING="1"
 eval $exe

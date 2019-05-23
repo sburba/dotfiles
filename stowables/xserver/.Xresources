@@ -7,6 +7,12 @@ URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt*externalBorder: 0
 URxvt*internalBorder: 0
 
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+
+Xcursor*size: 8
+
 !
 ! Generated with :
 ! XRDB2Xreources.py

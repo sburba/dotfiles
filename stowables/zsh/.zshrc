@@ -64,6 +64,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -100,8 +101,59 @@ source $ZSH/oh-my-zsh.sh
 # Set up fuck command
 eval $(thefuck --alias)
 
+# Directory to store php's composer cache files
+export COMPOSER_HOME=~/.cache/composer
+
 # I'm never going to learn to actually type nvim
 export EDITOR=nvim
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff='nvim -d'
+alias sudo='sudo '
+alias dc='docker-compose'
+alias yarn='nodejs-yarn'
+alias nodejs='node'
+
+# PHP's Composer without installing php or composer
+composer () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --user $(id -u):$(id -g) \
+        --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
+        --volume $COMPOSER_HOME:/tmp \
+        --env SSH_AUTH_SOCK=/ssh-auth.sock \
+        --volume /etc/passwd:/etc/passwd:ro \
+        --volume /etc/group:/etc/group:ro \
+        --volume $(pwd):/app \
+        composer "$@" 
+}
+
+# Puppet's pdk
+pdk () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --user $(id -u):$(id -g) \
+        --volume /etc/passwd:/etc/passwd:ro \
+        --volume /etc/group:/etc/group:ro \
+        --volume $(pwd):/app \
+        jacobhenner/puppet-pdk "$@"
+}
+
+# For dev-tools route_ip script
+export HOSTS_TO_ROUTE="webdev.barracuda.com stage.barracuda.com packages.bco.cudaops.com"
+
+function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
+    fi
+
+    command kubectl "$@"
+}

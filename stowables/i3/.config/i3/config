@@ -56,6 +56,18 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# move focused workspace
+bindsym $mod+Ctrl+Shift+h move workspace to output left
+bindsym $mod+Ctrl+Shift+j move workspace to output down
+bindsym $mod+Ctrl+Shift+k move workspace to output up
+bindsym $mod+Ctrl+Shift+l move workspace to output right
+
+# move focused workspace, with cursor keys
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Down move workspace to output down
+bindsym $mod+Ctrl+Shift+Up move workspace to output up
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
@@ -154,7 +166,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 #Intellij fixes
 focus_follows_mouse no
-popup_during_fullscreen smart
+#popup_during_fullscreen smart
 
 # Swap current container with mark A
 bindsym $mod+Shift+s swap container with mark A
@@ -186,18 +198,15 @@ default_border pixel 2
 
 bar {
     status_command i3status
-    tray_output primary
+    #tray_output primary
 }
 
 # Set up wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/yosemite.png
 
-exec_always --no-startup-id gnome-session
-
 exec_always --no-startup-id nm-applet
 
-# Detect and set up monitors
-exec_always --no-startup-id autorandr --change
+exec_always --no-startup-id xrdb ~/.Xresources
 
 # `input list` to find touchpad id
 # `xinput list-props <touchpad_id>` to find the tap to click prop
@@ -205,6 +214,8 @@ exec_always --no-startup-id autorandr --change
 # Turn on tap to click
 exec_always --no-startup-id xinput set-prop 12 295 1
 
-# Turn off "natural" scrolling
-exec_always --no-startup-id xinput set-prop 12 277 0
+exec_always --no-startup-id autorandr --change
+
+bindsym $mod+Mod1+s move scratchpad
+bindsym $mod+Mod1+h scratchpad show
 

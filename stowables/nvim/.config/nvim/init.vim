@@ -18,6 +18,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Copy to the system clipboard by default
+:set clipboard=unnamed
+
 " Make searching incremental and highlight
 :set incsearch
 :set hlsearch

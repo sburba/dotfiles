@@ -1,6 +1,16 @@
 :imap jk <Esc>
 
+" Enable vim surround emulation
 set surround
+" Copy into the system clipboard by default
+set clipboard=unnamed
 
+" Make searching incremental, igore case, and highlight
+set incsearch
+set ignorecase
+set hlsearch
+
+" Enable line numbers, make them relative to the current line
 set number
 set relativenumber
+
