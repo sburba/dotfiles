@@ -1,3 +1,8 @@
+- name: Install pip
+  become: yes
+  package:
+    name: python-pip
+    state: latest
 - name: Install the aws cli
   pip:
     name: awscli

@@ -1,17 +1,15 @@
-- name: Install Enpass Dependencies
+- name: Add Enpass Repo
+  become: yes
+  apt_repository:
+    repo: deb https://apt.enpass.io/ stable main
+    state: present
+- name: Add Enpass key
+  become: yes
+  apt_key:
+    url: https://apt.enpass.io/keys/enpass-linux.key
+- name: Install Enpass
   become: yes
   package:
-    name: "{{ item }}"
+    name: enpass
+    update_cache: yes
     state: latest
-  with_items:
-    - libXScrnSaver
-    - lsof
-- name: Download installer
-  get_url:
-    url: https://dl.sinew.in/linux/setup/5-6-9/Enpass_Installer_5.6.9 
-    dest: "{{ home_dir }}/Downloads/Enpass_Installer_5.6.9"
-    mode: "u=rwx,g=r,o=r"
-- name: Run installer
-  command: "{{ home_dir }}/Downloads/Enpass_Installer_5.6.9"
-  args:
-    creates: /opt/Enpass/runenpass.sh

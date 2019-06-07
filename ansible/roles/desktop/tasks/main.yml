@@ -1,20 +1,7 @@
-- include: chrome.yml
 - include: zsh.yml
 - include: dotfiles.yml
 - include: enpass.yml
-- include: laptop.yml
-- include: docker.yml
 - include: aws-cli.yml
-- name: Add required copr repositories
-  become: yes
-  command: dnf copr enable -y {{ item }}
-  args:
-    # Ansible dnf doesn't support copr
-    # See https://github.com/ansible/ansible/issues/26673
-    warn: no
-  with_items:
-    - thofmann/rofi
-    - dperson/neovim
 - name: Install Packages
   become: yes
   package:
@@ -28,18 +15,9 @@
     - scrot
     - htop
     - jq
-    # Desktop environment
-    - i3
-    - i3lock
-    - rofi
-    - feh
-    - arandr
-    - network-manager-applet
-    - pavucontrol
-    # Required to enable non-copr 3rd party repos
-    - dnf-plugins-core
 # Intellij and other file watching programs need to be able to watch a large number of files
 - name: Increase inotify max watches
+  become: yes
   sysctl:
     name: fs.inotify.max_user_watches
     state: present
