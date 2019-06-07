@@ -111,7 +111,6 @@ alias vi="nvim"
 alias vimdiff='nvim -d'
 alias sudo='sudo '
 alias dc='docker-compose'
-alias yarn='nodejs-yarn'
 alias nodejs='node'
 
 # PHP's Composer without installing php or composer

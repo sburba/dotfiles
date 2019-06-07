@@ -1,6 +1,7 @@
 - include: zsh.yml
 - include: dotfiles.yml
 - include: enpass.yml
+- include: yarn.yml
 - include: aws-cli.yml
 - name: Install Packages
   become: yes
