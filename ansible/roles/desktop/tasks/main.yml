@@ -7,7 +7,7 @@
   become: yes
   package:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
     - neovim
     - git

@@ -12,4 +12,4 @@
   package:
     name: enpass
     update_cache: yes
-    state: latest
+    state: present
