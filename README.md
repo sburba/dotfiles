@@ -1,4 +1,4 @@
-My desktop setup, assumes a fedora base. 
+My desktop setup, assumes an ubuntu base. 
 
 # Install
 
