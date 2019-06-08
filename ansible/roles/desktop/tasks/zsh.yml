@@ -2,7 +2,7 @@
   become: yes
   package:
     name: zsh
-    state: latest
+    state: present
 - name: Install oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
