@@ -6,7 +6,9 @@
 - name: Add Enpass key
   become: yes
   apt_key:
+    key: B6DA722E2E65721AF54B93966F7565879798C2FC
     url: https://apt.enpass.io/keys/enpass-linux.key
+    state: present
 - name: Install Enpass
   become: yes
   package:
