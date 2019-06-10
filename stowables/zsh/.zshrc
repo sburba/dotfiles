@@ -156,3 +156,10 @@ function kubectl() {
 
     command kubectl "$@"
 }
+
+function note() {
+    note_name=$1
+    mkdir -p ~/Documents/notes
+
+    vim ~/Documents/notes/${note_name}.md
+}
