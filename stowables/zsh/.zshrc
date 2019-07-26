@@ -98,12 +98,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"A
 
-# Set up fuck command
 eval $(thefuck --alias)
+eval "$(direnv hook zsh)"
 
 # Directory to store php's composer cache files
 export COMPOSER_HOME=~/.cache/composer
 
+export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
 # I'm never going to learn to actually type nvim
 export EDITOR=nvim
 alias vim="nvim"
@@ -123,7 +124,6 @@ composer () {
         --rm \
         --user $(id -u):$(id -g) \
         --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
-        --volume $COMPOSER_HOME:/tmp \
         --env SSH_AUTH_SOCK=/ssh-auth.sock \
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
