@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-sudo apt install git ansible -y
+sudo apt install git ansible python -y
 
 git clone https://github.com/sburba/dotfiles.git ~/.dotfiles
 
