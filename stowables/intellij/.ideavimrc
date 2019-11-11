@@ -1,7 +1,10 @@
 :imap jk <Esc>
 
-" Enable vim surround emulation
+" Enable vim plugins
 set surround
+set vim-multiple-cursors
+set vim-commentary
+
 " Copy into the system clipboard by default
 set clipboard=unnamed
 
@@ -12,5 +15,5 @@ set hlsearch
 
 " Enable line numbers, make them relative to the current line
 set number
-set relativenumber
 
+set clipboard+=ideaputset ideajoinset clipboard+=ideaput

@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$HOME/.yarn/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -113,6 +113,13 @@ alias vimdiff='nvim -d'
 alias sudo='sudo '
 alias dc='docker-compose'
 alias nodejs='node'
+alias barracudavpn='TERM=xterm barracudavpn'
+php-cs-fixer () {
+    docker run --rm \
+        --user $(id -u):$(id -g) \
+        --volume $(pwd):/project \
+        herloct/php-cs-fixer $@
+}
 
 # PHP's Composer without installing php or composer
 composer () {
@@ -147,7 +154,7 @@ pdk () {
 }
 
 # For dev-tools route_ip script
-export HOSTS_TO_ROUTE="webdev.barracuda.com stage.barracuda.com packages.bco.cudaops.com"
+export HOSTS_TO_ROUTE="webdev.barracuda.com stage.barracuda.com packages.bco.cudaops.com blackduck-hub.cudaops.com"
 
 function kubectl() {
     if ! type __start_kubectl >/dev/null 2>&1; then
@@ -158,8 +165,19 @@ function kubectl() {
 }
 
 function note() {
-    note_name=$1
+    local note_name=$1
     mkdir -p ~/Documents/notes
 
     vim ~/Documents/notes/${note_name}.md
 }
+
+function yesterday() {
+    local last=$(ls ~/Documents/work_log | sort -r | grep -v $(date +%y-%m-%d) | head -n1)
+    vim ~/Documents/work_log/${last}
+}
+
+function today() {
+    vim ~/Documents/work_log/$(date +%y-%m-%d).md
+}
+
+export DEV_HOME="/home/sburba/Development"
