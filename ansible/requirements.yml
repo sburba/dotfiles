@@ -1,5 +1,3 @@
 - src: https://github.com/jaredhocutt/ansible-jetbrains-toolbox.git
-- src: withmethod.google-chrome
-  version: master
 - src: geerlingguy.docker
   version: master
