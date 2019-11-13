@@ -1,0 +1,7 @@
+# Intellij and other file watching programs need to be able to watch a large number of files
+- name: Increase inotify max watches
+  become: yes
+  sysctl:
+    name: fs.inotify.max_user_watches
+    state: present
+    value: 524288

@@ -1,0 +1,15 @@
+- name: Install Packages
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - neovim
+    - git
+    - xclip
+    - thefuck
+    - scrot
+    - htop
+    - jq
+    - direnv
+    - net-tools
