@@ -2,7 +2,7 @@ My desktop setup, assumes an ubuntu base.
 
 # Install
 
-curl -L desktop.burba.io | bash
+curl https://dotfiles.burba.io | bash
 
 # Issues
 

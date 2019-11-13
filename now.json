@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "dotfiles",
+    "alias": "dotfiles.burba.io",
+    "routes": [
+        { "src": "/", "dest": "bootstrap.sh" }
+    ]
+}
