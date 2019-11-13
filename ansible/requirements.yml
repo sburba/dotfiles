@@ -1,3 +1,4 @@
 - src: https://github.com/jaredhocutt/ansible-jetbrains-toolbox.git
+- src: darkwizard242.googlechrome
 - src: geerlingguy.docker
   version: master
