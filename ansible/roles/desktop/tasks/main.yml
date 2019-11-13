@@ -27,17 +27,3 @@
     name: fs.inotify.max_user_watches
     state: present
     value: 524288
-- name: Remove unused base packages
-  become: yes
-  package:
-    name: "{{ item }}"
-    state: absent
-    autoremove: yes
-  with_items:
-    - libreoffice-calc
-    - libreoffice-draw
-    - libreoffice-impress
-    - libreoffice-math
-    - libreoffice-writer
-    - libreoffice-core
-    - libreofficekit
