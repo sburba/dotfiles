@@ -1,0 +1,5 @@
+- name: Caps lock for escape
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['caps:escape']"
+    state: present

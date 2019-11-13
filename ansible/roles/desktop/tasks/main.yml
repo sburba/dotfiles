@@ -4,6 +4,7 @@
 - include: yarn.yml
 - include: aws-cli.yml
 - include: regolith.yml
+- include: capslock-escape.yml
 - name: Install Packages
   become: yes
   package:
