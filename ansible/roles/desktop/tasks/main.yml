@@ -18,7 +18,6 @@
     - scrot
     - htop
     - jq
-    - rxvt-unicode
     - direnv
     - net-tools
 # Intellij and other file watching programs need to be able to watch a large number of files
