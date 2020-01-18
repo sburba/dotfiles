@@ -113,48 +113,6 @@ alias vimdiff='nvim -d'
 alias sudo='sudo '
 alias dc='docker-compose'
 alias nodejs='node'
-alias barracudavpn='TERM=xterm barracudavpn'
-php-cs-fixer () {
-    docker run --rm \
-        --user $(id -u):$(id -g) \
-        --volume $(pwd):/project \
-        herloct/php-cs-fixer $@
-}
-
-# PHP's Composer without installing php or composer
-composer () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user $(id -u):$(id -g) \
-        --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
-        --env SSH_AUTH_SOCK=/ssh-auth.sock \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        composer "$@" 
-}
-
-# Puppet's pdk
-pdk () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        jacobhenner/puppet-pdk "$@"
-}
-
-# For dev-tools route_ip script
-export HOSTS_TO_ROUTE="webdev.barracuda.com stage.barracuda.com packages.bco.cudaops.com blackduck-hub.cudaops.com"
 
 function kubectl() {
     if ! type __start_kubectl >/dev/null 2>&1; then
@@ -179,5 +137,3 @@ function yesterday() {
 function today() {
     vim ~/Documents/work_log/$(date +%y-%m-%d).md
 }
-
-export DEV_HOME="/home/sburba/Development"
