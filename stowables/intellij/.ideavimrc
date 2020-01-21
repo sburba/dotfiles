@@ -2,8 +2,8 @@
 
 " Enable vim plugins
 set surround
-set vim-multiple-cursors
-set vim-commentary
+set multiple-cursors
+set commentary
 
 " Copy into the system clipboard by default
 set clipboard=unnamed
