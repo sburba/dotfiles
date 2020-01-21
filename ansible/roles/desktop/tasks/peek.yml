@@ -1,0 +1,9 @@
+- name: Add PPA
+  become: yes
+  apt_repository:
+    repo: ppa:peek-developers/stable
+- name: Install Peek
+  become: yes
+  package:
+    name: peek
+    state: present
