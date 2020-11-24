@@ -2,9 +2,7 @@
 - include: peek.yml
 - include: zsh.yml
 - include: dotfiles.yml
-- include: enpass.yml
 - include: yarn.yml
-- include: aws-cli.yml
-- include: regolith.yml
 - include: capslock-escape.yml
 - include: file-watchers.yml
+- include: pop-shell.yml

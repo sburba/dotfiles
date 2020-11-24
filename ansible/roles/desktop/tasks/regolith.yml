@@ -1,9 +1,0 @@
-- name: Enable Regolith PPA
-  become: yes
-  command: add-apt-repository -y ppa:kgilmer/regolith-stable
-- name: Install Regolith
-  become: yes
-  package:
-    name: regolith-desktop
-    update_cache: yes
-    state: present

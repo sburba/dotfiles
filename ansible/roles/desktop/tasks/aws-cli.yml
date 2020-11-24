@@ -1,9 +1,0 @@
-- name: Install pip
-  become: yes
-  package:
-    name: python-pip
-    state: present
-- name: Install the aws cli
-  pip:
-    name: awscli
-    extra_args: --upgrade --user

@@ -8,7 +8,6 @@
     - git
     - xclip
     - thefuck
-    - scrot
     - htop
     - jq
     - direnv
