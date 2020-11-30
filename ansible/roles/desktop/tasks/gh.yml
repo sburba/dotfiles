@@ -1,0 +1,16 @@
+- name: Add Github client key
+  become: yes
+  command:
+    cmd: apt-key --keyring /usr/share/keyrings/github.gpg adv --keyserver keyserver.ubuntu.com --recv-keys C99B11DEB97541F0
+    creates: /usr/share/keyrings/github.gpg
+- name: Add Github Repository
+  become: yes
+  apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/github.gpg] https://cli.github.com/packages stable main
+    state: present
+- name: Install Github client
+  become: yes
+  package:
+    name: gh
+    update_cache: yes
+    state: present

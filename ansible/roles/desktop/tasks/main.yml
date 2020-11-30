@@ -7,3 +7,4 @@
 - include: file-watchers.yml
 - include: pop-shell.yml
 - include: 1password.yml
+- include: gh.yml
