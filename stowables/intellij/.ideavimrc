@@ -1,19 +1,27 @@
-:imap jk <Esc>
-
-" Enable vim plugins
+set ideajoin
 set surround
 set multiple-cursors
 set commentary
 
-" Copy into the system clipboard by default
-set clipboard=unnamed
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
 
-" Make searching incremental, igore case, and highlight
+nnoremap g, :action VcsShowNextChangeMarker<CR>
+nnoremap g; :action VcsShowPrevChangeMarker<CR>
+
+nnoremap gr :action RenameElement<CR>
+
+nnoremap gz :action Vcs.RallbackChangedLines<CR>
+
+nnoremap gh :action QuickJavaDoc<CR>
+
+" Disable search highlights until the next search
+
+nnoremap <C-n> :noh<CR>
+
+" Make search incremental, highlight, and apply casing intelligently
 set incsearch
-set ignorecase
 set hlsearch
+set ignorecase
+set smartcase
 
-" Enable line numbers, make them relative to the current line
-set number
-
-set clipboard+=ideaputset ideajoinset clipboard+=ideaput
