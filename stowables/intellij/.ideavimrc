@@ -11,7 +11,7 @@ nnoremap g; :action VcsShowPrevChangeMarker<CR>
 
 nnoremap gr :action RenameElement<CR>
 
-nnoremap gz :action Vcs.RallbackChangedLines<CR>
+nnoremap gz :action Vcs.RollbackChangedLines<CR>
 
 nnoremap gh :action QuickJavaDoc<CR>
 
