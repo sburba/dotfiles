@@ -12,3 +12,4 @@
     - jq
     - direnv
     - net-tools
+    - curl
