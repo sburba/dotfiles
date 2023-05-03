@@ -15,6 +15,10 @@ nnoremap gz :action Vcs.RollbackChangedLines<CR>
 
 nnoremap gh :action QuickJavaDoc<CR>
 
+" Map backwards and forwards to intellij's backwards and forwards
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
 " Disable search highlights until the next search
 
 nnoremap <C-n> :noh<CR>

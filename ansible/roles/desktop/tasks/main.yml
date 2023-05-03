@@ -5,6 +5,5 @@
 - include: yarn.yml
 - include: capslock-escape.yml
 - include: file-watchers.yml
-- include: pop-shell.yml
 - include: 1password.yml
 - include: gh.yml

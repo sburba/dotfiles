@@ -1,0 +1,5 @@
+regolith.look.path: /usr/share/regolith-look/default
+regolith.wallpaper.file: /home/sburba/.dotfiles/desktop.png
+regolith.lockscreen.wallpaper.file: /home/sburba/.dotfiles/desktop.png
+i3-wm.binding.wifi:
+i3-wm.binding.launcher.window: Super+w

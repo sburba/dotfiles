@@ -113,6 +113,8 @@ alias vimdiff='nvim -d'
 alias sudo='sudo '
 alias dc='docker-compose'
 alias nodejs='node'
+alias open='xdg-open'
+
 
 function kubectl() {
     if ! type __start_kubectl >/dev/null 2>&1; then
@@ -137,3 +139,19 @@ function yesterday() {
 function today() {
     vim ~/Documents/work_log/$(date +%y-%m-%d).md
 }
+
+function cd() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && ls
+}
+export PATH="/usr/local/go/bin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(pyenv init -)"
